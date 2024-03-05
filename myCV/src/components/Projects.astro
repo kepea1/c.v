@@ -4,31 +4,36 @@ interface Props {
 	tag: string;
 	body: string;
 	site: string;
+    tech: string;
 	repo: string;
 }
 
-const {  title, tag, body, site, repo } = Astro.props;
+const {  title, tag, site, repo,tech,body } = Astro.props;
 ---
+<div class="space-y-1">
+<h1 class=" font-bold text-xl ">{title}</h1>
+<h2 class="italic text-xs"> {tag} </h2>
 
-<h1 class=" font-bold ">{title}</h1>
-<h2 class=" italic"> {tag} </h2>
-	
-	<a href={site} target="_blank" rel="noopener noreferrer">
-		<h2>
-			<span>🔗</span>
-			Deployed Site	
-		</h2>
-		
+    <div class="flex flex-row space-x-2  text-xs">
+        <p>🔗</p> 
+	    <a href={site} target="_blank" rel="noopener noreferrer">
+		<p class="underline">
+            Deployed Site	
+		</p>
 	</a>
-	
 	<a href={repo} target="_blank" rel="noopener noreferrer">
-		<h2>
-			<span>🔗</span>
-			Repo
-		</h2>
-		
+		<p>🔗</p> 
+	    <a href={repo} target="_blank" rel="noopener noreferrer">
+		<p class="underline">
+            Repo	
+		</p>
 	</a>
+    </div>
+
+	<p>{tech}</p>
 	<p>{body}</p>
+</div>
+<!-- ----- -->
 <style>
 	
 </style>

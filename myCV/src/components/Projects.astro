@@ -1,39 +1,53 @@
 ---
 interface Props {
-	title: string;
-	tag: string;
-	body: string;
-	site: string;
-    tech: string;
-	repo: string;
+  title: string;
+  tag: string;
+  site: string;
+  tech_Frontend: string;
+  repo: string;
+  tech_Backend: string;
+  tech_Other: string;
 }
 
-const {  title, tag, site, repo,tech,body } = Astro.props;
+const { title, tag, site, repo, tech_Frontend, tech_Backend, tech_Other } =
+  Astro.props;
 ---
+
 <div class="space-y-1">
-<h1 class=" font-bold text-xl ">{title}</h1>
-<h2 class="italic text-xs"> {tag} </h2>
+  <h1 class="font-bold text-xl">{title}</h1>
+  <h2 class="italic text-xs">{tag}</h2>
 
-    <div class="flex flex-row space-x-2  text-xs">
-        <p>🔗</p> 
-	    <a href={site} target="_blank" rel="noopener noreferrer">
-		<p class="underline">
-            Deployed Site	
-		</p>
-	</a>
-	<a href={repo} target="_blank" rel="noopener noreferrer">
-		<p>🔗</p> 
-	    <a href={repo} target="_blank" rel="noopener noreferrer">
-		<p class="underline">
-            Repo	
-		</p>
-	</a>
-    </div>
-
-	<p>{tech}</p>
-	<p>{body}</p>
+  <div class="flex flex-row space-x-2 text-s">
+    <p>🔗</p>
+    <a
+      class="inline-block"
+      href={site}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p class="underline">Deployed Site</p>
+    </a>
+    <a href={repo} target="_blank" rel="noopener noreferrer">
+      <p>🔗</p>
+      <a href={repo} target="_blank" rel="noopener noreferrer">
+        <p class="underline">Repo</p>
+      </a>
+    </a>
+  </div>
+  <div class="flex flex-col m-1 ">
+    <p class="text-[13px] border-2 border-white bg-black text-white w-max">
+      {tech_Frontend}
+    </p>
+    <p class="text-[13px] border-2 border-white  bg-black text-white w-max">
+      {tech_Backend}
+    </p>
+    <p class="text-[13px] border-2 border-white bg-black text-white w-max">
+      {tech_Other}
+    </p>
+  </div>
+  <div class="">
+    <slot class="" />
+  </div>
+  <!-- ----- -->
+  <style></style>
 </div>
-<!-- ----- -->
-<style>
-	
-</style>

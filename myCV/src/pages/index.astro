@@ -9,7 +9,7 @@ import Projects from "../components/Projects.astro";
 
   // color spolight
 
-  const container = document.getElementById("container");
+  const container = document.getElementById("container")!;
   ////////
   const text = container.innerText;
   container.innerHTML = "";
@@ -47,7 +47,9 @@ import Projects from "../components/Projects.astro";
 <script>
   // highlights all of the other iterations of a word at the same time
   window.onload = function () {
-    const reactSpans = document.querySelectorAll(".react-span");
+    const reactSpans = document.querySelectorAll(
+      ".react-span"
+    ) as NodeListOf<HTMLSpanElement>;
     reactSpans.forEach((span) => {
       span.addEventListener("mouseover", () => {
         reactSpans.forEach(

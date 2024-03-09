@@ -13,35 +13,48 @@ const { title, tag, site, repo, tech_Frontend, tech_Backend, tech_Other } =
   Astro.props;
 ---
 
-<div class="space-y-1">
-  <h1 class="font-bold text-xl">{title}</h1>
-  <h2 class="italic text-xs">{tag}</h2>
+<div class="space-y-1 flex flex-col gap-1">
+  <div class=" ">
+    <h1 class=" font-bold text-xl tracking-tighter">{title}</h1>
+    <h2 class="italic text-xs text-slate-600">{tag}</h2>
 
-  <div class="flex flex-row space-x-2 text-s">
-    <p>🔗</p>
-    <a
-      class="inline-block"
-      href={site}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <p class="underline">Deployed Site</p>
-    </a>
-    <a href={repo} target="_blank" rel="noopener noreferrer">
+    <div class="flex flex-row space-x-2 text-s ">
       <p>🔗</p>
-      <a href={repo} target="_blank" rel="noopener noreferrer">
-        <p class="underline">Repo</p>
+      <a
+        class="inline-block"
+        href={site}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <p class="underline">Deployed Site</p>
       </a>
-    </a>
+      <a href={repo} target="_blank" rel="noopener noreferrer">
+        <p>🔗</p>
+        <a href={repo} target="_blank" rel="noopener noreferrer">
+          <p class="underline">Repo</p>
+        </a>
+      </a>
+    </div>
   </div>
-  <div class="">
-    <p class="text-[13px] border-2 border-white bg-black text-white w-fit">
+  <!-- <div class="bg-slate-700 w-fit">
+    <p class="text-[13px]   text-white w-fit">
       {tech_Frontend}
     </p>
-    <p class="text-[13px] border-2 border-white bg-black text-white w-fit">
+    <p class="text-[13px]   text-white w-fit">
       {tech_Backend}
     </p>
-    <p class="text-[13px] border-2 border-white bg-black text-white w-fit">
+    <p class="text-[13px]   text-white w-fit">
+      {tech_Other}
+    </p>
+  </div> -->
+  <div class="">
+    <p class="text-[13px] border-2 border-white bg-slate-800 text-white w-fit">
+      {tech_Frontend}
+    </p>
+    <p class="text-[13px] border-2 border-white bg-slate-800 text-white w-fit">
+      {tech_Backend}
+    </p>
+    <p class="text-[13px] border-2 border-white bg-slate-800 text-white w-fit">
       {tech_Other}
     </p>
   </div>

@@ -111,7 +111,7 @@ border-8 border-red-800
       <!-- <div class="m-5 justify-around flex flex-row border-4 border-red-600 gap-x-px"> -->
       <div class="m-5 grid gap-2 grid-row-3 tracking-tight lg:flex lg:flex-row">
         <div class="">
-          <h3 class="font-bold">Front End</h3>
+          <h3 class="font-bold underline">Front End</h3>
           <p class="">
             <span class="react-span">React</span> | JavaScript | TypeScript | HTML5
             | CSS3 | Jest | Playwright
@@ -119,13 +119,13 @@ border-8 border-red-800
         </div>
         <div class="group-hover:bg-black group-hover:text-white">
           <div>
-            <h3 class="font-bold">Back End</h3>
+            <h3 class="font-bold underline">Back End</h3>
           </div>
           <p>Node.js | Express.js | PostgreSQL | Supabase</p>
         </div>
         <div class="group-hover:bg-black group-hover:text-white">
           <div>
-            <h3 class="font-bold">Other</h3>
+            <h3 class="font-bold underline">Other</h3>
           </div>
           <p>VSCode | Git | Trello | Figma | Netlify | Vercel</p>
         </div>
@@ -136,7 +136,7 @@ border-8 border-red-800
       <div class="bg-slate-100">
         <h2 class="text-2xl text-center">Projects</h2>
       </div>
-      <div class="m-10 flex flex-col space-y-5">
+      <div class="md:m-10 m-5 flex flex-col space-y-5">
         <div class="inline-block">
           <Projects
             title="Raena Cohen EPK"
@@ -151,7 +151,7 @@ border-8 border-red-800
             <div class="m-3">
               <!-- <h1>Tech Stack</h1> -->
 
-              <ul class="list-disc flex flex-col gap-1  ">
+              <ul class="list-disc flex flex-col gap-1">
                 <li>
                   Designed and built a responsive, mobile-first website for a
                   musician.
@@ -174,50 +174,104 @@ border-8 border-red-800
           </Projects>
         </div>
 
-        <div class="">
+        <div class="flex flex-col">
           <div class="">
-            <Projects
-              title="Paws For Affection"
-              tag="Dog adoption site"
-              site="https://pawsforaffection.netlify.app/"
-              repo="https://github.com/K-velvet-P/TheHackitectsFinalProjects"
-              tech_Frontend="Frontend: JavaScript | Swiper, Material UI | Jest, Playwrite | Netlify"
-              tech_Backend="Backend: Node.js | Supabase"
-              tech_Other=""
-            >
-              <div class="m-3 flex space-x-6">
-                <ul class="list-disc flex flex-col gap-1">
-                  <li>
-                    Developed a full-stack <span class="react-span">React</span>
-                    app in an agile team and demoing it to industry experts.
-                  </li>
-                  <li>
-                    Collaborated with team members to ideate, plan and execute
-                    the project
-                  </li>
-                  <li>
-                    Participated in pair programming, improving team-working,
-                    communication, and problem-solving skills.
-                  </li>
-                  <li>Led the team in daily stand-ups, retros and sprints.</li>
-                  <li>
-                    Contributed to building a database, linking it to the
-                    frontend and displaying dogs avabile for adoption on site.
-                  </li>
-                  <li>
-                    Contributed to implementing log in functionally with
-                    authorisation.
-                  </li>
-                  <li>
-                    Contributed to utelising superbase’s built it Postgrest
-                    query builder to allow authorised users to populate the
-                    database.
-                  </li>
-                </ul>
-              </div>
-            </Projects>
+            <div class="flex flex">
+              <Projects
+                title="Paws For Affection"
+                tag="Dog adoption site"
+                site="https://pawsforaffection.netlify.app/"
+                repo="https://github.com/K-velvet-P/TheHackitectsFinalProjects"
+                tech_Frontend="Frontend: JavaScript | Swiper, Material UI | Jest, Playwrite | Netlify"
+                tech_Backend="Backend: Node.js | Supabase"
+                tech_Other=""
+              />
+            </div>
+
+            <div class="m-3">
+              <ul class="list-disc flex flex-col gap-1">
+                <li>
+                  Developed a full-stack <span class="react-span">React</span>
+                  app in an agile team and demoing it to industry experts.
+                </li>
+                <li>
+                  Collaborated with team members to ideate, plan and execute the
+                  project
+                </li>
+                <li>
+                  Participated in pair programming, improving team-working,
+                  communication, and problem-solving skills.
+                </li>
+                <li>Led the team in daily stand-ups, retros and sprints.</li>
+                <li>
+                  Contributed to building a database, linking it to the frontend
+                  and displaying dogs avabile for adoption on site.
+                </li>
+                <li>
+                  Contributed to implementing log in functionally with
+                  authorisation.
+                </li>
+                <li>
+                  Contributed to utelising superbase’s built it Postgrest query
+                  builder to allow authorised users to populate the database.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+        <!-- <div class="flex flex-col">
+          <div class="">
+            <div class="flex flex">
+              <Projects
+                title="Paws For Affection"
+                tag="Dog adoption site"
+                site="https://pawsforaffection.netlify.app/"
+                repo="https://github.com/K-velvet-P/TheHackitectsFinalProjects"
+                tech_Frontend="Frontend: JavaScript | Swiper, Material UI | Jest, Playwrite | Netlify"
+                tech_Backend="Backend: Node.js | Supabase"
+                tech_Other=""
+              />
+              <div
+                class="ml-96 relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
+              >
+                <img
+                  src="/Macbook-Air-pawsforaffection.netlify.app.png"
+                  alt="Paws for Affection"
+                />
+              </div>
+            </div>
+
+            <div class="m-3">
+              <ul class="list-disc flex flex-col gap-1">
+                <li>
+                  Developed a full-stack <span class="react-span">React</span>
+                  app in an agile team and demoing it to industry experts.
+                </li>
+                <li>
+                  Collaborated with team members to ideate, plan and execute the
+                  project
+                </li>
+                <li>
+                  Participated in pair programming, improving team-working,
+                  communication, and problem-solving skills.
+                </li>
+                <li>Led the team in daily stand-ups, retros and sprints.</li>
+                <li>
+                  Contributed to building a database, linking it to the frontend
+                  and displaying dogs avabile for adoption on site.
+                </li>
+                <li>
+                  Contributed to implementing log in functionally with
+                  authorisation.
+                </li>
+                <li>
+                  Contributed to utelising superbase’s built it Postgrest query
+                  builder to allow authorised users to populate the database.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
 
         <div>
           <div class="">
@@ -251,7 +305,10 @@ border-8 border-red-800
         <div class="bg-slate-100">
           <h2 class="text-2xl text-center">Profile</h2>
         </div>
-        <p class="m-10 indent-8 text-justify leading-loose" id="container">
+        <p
+          class="m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
+          id="container"
+        >
           Throughout my life, I have travelled extensively, lived with diverse
           groups, and embraced new perspectives. These experiences have shaped
           my ability to work in a team, adapt quickly, think creatively, and

@@ -3,47 +3,39 @@ import Projects from "../components/Projects.astro";
 ---
 
 <script>
-  // PROBLEM
-  // querySelector works fine but not querySelectorAll - due to it sending back a node list of all matching classes?
-  // if i add the spotlight class to the whole document then all the rest of the formatting goes out the window
+  let elements: NodeListOf<Element> = document.querySelectorAll(".spotlight");
 
-  // color spolight
+  for (let i = 0; i < elements.length; i++) {
+    let htmlElement = elements[i] as HTMLElement;
+    // console.log(htmlElement.innerText);
+    const text = htmlElement.innerText;
+    htmlElement.innerHTML = "";
 
-  const container = document.getElementById("container")!;
-  ////////
-  const text = container.innerText;
-  container.innerHTML = "";
+    for (let letter of text) {
+      htmlElement.innerHTML += `<span>${letter}</span>`;
+    }
+    const spans = htmlElement.querySelectorAll("span");
 
-  // Create a span for each letter
-  for (let letter of text) {
-    container.innerHTML += `<span>${letter}</span>`;
-  }
-  ///////
-
-  const spans = container.querySelectorAll("span");
-
-  container.addEventListener("mousemove", (e) => {
-    spans.forEach((span) => {
-      const rect = span.getBoundingClientRect();
-      const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY);
-
-      // Change color based on distance from mouse pointer
-      if (dist < 60) {
-        // span.style.color = "red";
-
-        span.style.background = " rgb(131,58,180)";
-        span.style.background =
-          " radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)";
-        span.style.backgroundClip = "text";
-        span.style.webkitTextFillColor = "transparent";
-      } else {
-        span.style.color = "black";
-        span.style.background = "white";
-        span.style.webkitTextFillColor = "";
-      }
+    htmlElement.addEventListener("mousemove", (e) => {
+      spans.forEach((span) => {
+        const rect = span.getBoundingClientRect();
+        const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY);
+        if (dist < 60) {
+          span.style.background = " rgb(131,58,180)";
+          span.style.background =
+            " radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)";
+          span.style.backgroundClip = "text";
+          span.style.webkitTextFillColor = "transparent";
+        } else {
+          span.style.color = "black";
+          span.style.background = "white";
+          span.style.webkitTextFillColor = "";
+        }
+      });
     });
-  });
+  }
 </script>
+
 <script>
   // highlights all of the other iterations of a word at the same time
   window.onload = function () {
@@ -152,19 +144,19 @@ border-8 border-red-800
               <!-- <h1>Tech Stack</h1> -->
 
               <ul class="list-disc flex flex-col gap-5 md:gap-2">
-                <li>
+                <li class="spotlight">
                   Designed and built a responsive, mobile-first website for a
                   musician.
                 </li>
-                <li>
+                <li class="spotlight">
                   Liaised with client to design, implement and adapt according
                   to feedback.
                 </li>
-                <li>
+                <li class="spotlight">
                   Utilised various methods to showcase artist work, such as
                   I-frames and connecting to Linktrees.
                 </li>
-                <li>
+                <li class="spotlight">
                   Integrated a contact form using Nodemailer, attached directly
                   to the clients professional email. Including validation and
                   feedback.
@@ -190,28 +182,30 @@ border-8 border-red-800
 
             <div class="m-3">
               <ul class="list-disc flex flex-col gap-5 md:gap-2">
-                <li>
+                <li class="spotlight">
                   Developed a full-stack <span class="react-span">React</span>
                   app in an agile team and demoing it to industry experts.
                 </li>
-                <li>
+                <li class="spotlight">
                   Collaborated with team members to ideate, plan and execute the
                   project
                 </li>
-                <li>
+                <li class="spotlight">
                   Participated in pair programming, improving team-working,
                   communication, and problem-solving skills.
                 </li>
-                <li>Led the team in daily stand-ups, retros and sprints.</li>
-                <li>
+                <li class="spotlight">
+                  Led the team in daily stand-ups, retros and sprints.
+                </li>
+                <li class="spotlight">
                   Contributed to building a database, linking it to the frontend
                   and displaying dogs avabile for adoption on site.
                 </li>
-                <li>
+                <li class="spotlight">
                   Contributed to implementing log in functionally with
                   authorisation.
                 </li>
-                <li>
+                <li class="spotlight">
                   Contributed to utelising superbase’s built it Postgrest query
                   builder to allow authorised users to populate the database.
                 </li>
@@ -286,7 +280,7 @@ border-8 border-red-800
             >
               <div class="m-3">
                 <ul class="list-disc flex flex-col gap-5 md:gap-2">
-                  <li>
+                  <li class="spotlight">
                     Pair Programming using a driver/navigator set up, to design
                     and create a front end <span class="react-span">React</span>
                     app game using the Star Wars Api.
@@ -306,25 +300,23 @@ border-8 border-red-800
           <h2 class="text-2xl text-center">Profile</h2>
         </div>
         <p
-          class="m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
-          id="container"
+          class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
         >
           Throughout my life, I have travelled extensively, lived with diverse
           groups, and embraced new perspectives. These experiences have shaped
           my ability to work in a team, adapt quickly, think creatively, and
           approach challenges with an open mind I have played a vital role in
           raising and mentoring my younger sisters, instilling in me strong
-          leadership, patience, and the ability to guide others towards growth.<p
-            class="m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
-            id="container"
+          leadership, patience, and the ability to guide others towards growth.
+          <p
+            class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
           >
             With the help of technology, I have been able to overcome my
             dyslexia and discover a love for learning, which has ignited a
             strong passion for all things tech.
           </p>
           <p
-            class="m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
-            id="container"
+            class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
           >
             Recently completing a 16-week coding bootcamp honed my skills in
             front-end, back-end, and infrastructure technologies. i complement
@@ -335,14 +327,4 @@ border-8 border-red-800
       </div>
     </div>
   </body>
-
-  <!-- <style>
-  /* .react-span:hover {
-    color: #61dafb;
-  } */
-
-  /* [class~="react_span"] {
-  color:#61dafb;
-} */
-</style> -->
 </html>

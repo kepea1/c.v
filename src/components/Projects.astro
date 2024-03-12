@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
   title: string;
   tag: string;
@@ -15,7 +16,13 @@ const { title, tag, site, repo } = Astro.props;
     <h2 class="italic text-xs text-slate-600">{tag}</h2>
 
     <div class="flex flex-row space-x-2 text-s">
-      <p>🔗</p>
+      <Image
+        class="w-4 h-4"
+        width="48"
+        height="48"
+        src="/link-icon-64.png"
+        alt="link to deployed site"
+      />
       <a
         class="inline-block"
         href={site}
@@ -25,35 +32,20 @@ const { title, tag, site, repo } = Astro.props;
         <p class="underline">Deployed Site</p>
       </a>
       <a href={repo} target="_blank" rel="noopener noreferrer">
-        <p>🔗</p>
+        <Image
+          class="w-4 h-4"
+          width="48"
+          height="48"
+          src="/link-icon-64.png"
+          alt="link to repo"
+        />
         <a href={repo} target="_blank" rel="noopener noreferrer">
           <p class="underline">Repo</p>
         </a>
       </a>
     </div>
   </div>
-  <!-- <div class="bg-slate-700 w-fit">
-    <p class="text-[13px]   text-white w-fit">
-      {tech_Frontend}
-    </p>
-    <p class="text-[13px]   text-white w-fit">
-      {tech_Backend}
-    </p>
-    <p class="text-[13px]   text-white w-fit">
-      {tech_Other}
-    </p>
-  </div> -->
-  <!-- <div class="">
-    <p class="text-[13px] border-2 w-fit">
-      {tech_Frontend}
-    </p>
-    <p class="text-[13px] border-2 w-fit">
-      {tech_Backend}
-    </p>
-    <p class="text-[13px] border-2  w-fit">
-      {tech_Other}
-    </p>
-  </div> -->
+
   <div class="">
     <slot class="" />
   </div>

@@ -28,6 +28,7 @@ const { title, tag, site, repo } = Astro.props;
         href={site}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="link to Deployed Site"
       >
         Deployed Site
       </a>
@@ -38,6 +39,8 @@ const { title, tag, site, repo } = Astro.props;
         height="48"
         src="/link-icon-64.png"
         alt="link to repo"
+        aria-label="link to repo"
+
       />
       <a
         class="inline-block underline"

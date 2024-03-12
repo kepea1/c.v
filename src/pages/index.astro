@@ -18,68 +18,94 @@ import Projects from "../components/Projects.astro";
 
     htmlElement.addEventListener("mousemove", (e) => {
       spans.forEach((span) => {
-        const rect = span.getBoundingClientRect();
-        const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY);
-        if (dist < 60) {
-          span.style.background = " rgb(131,58,180)";
-          span.style.background =
-            " radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)";
-          span.style.backgroundClip = "text";
-          span.style.webkitTextFillColor = "transparent";
+        const rect = span.getBoundingClientRect(); // get the size of the element
+        const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY); // get the distance between the mouse and the element
+        if (dist < 40) {
+          // if the distance is less than 40px
+          span.style.background = "rgba(300,58,180,1)";
+          // span.style.color = "white";
+          span.style.outline = "black";
+
+          // span.style.background =
+          //   "radial-gradient(circle, rgba(300,58,180,1) 20%, rgba(253,29,29,1) 60%, rgba(252,176,69,1) 20%)";
+          // span.style.backgroundClip = "text";
+          // span.style.webkitTextFillColor = "transparent";
         } else {
           span.style.color = "black";
           span.style.background = "white";
-          span.style.webkitTextFillColor = "";
+          // span.style.webkitTextFillColor = "";
         }
       });
     });
+
+    // htmlElement.addEventListener("mousemove", (e) => {
+    //   spans.forEach((span) => {
+    //     const rect = span.getBoundingClientRect();
+    //     const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY);
+    //     if (dist < 60) {
+    //       span.style.background = " rgb(131,58,180)";
+    //       span.style.background =
+    //         " radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)";
+    //       span.style.backgroundClip = "text";
+    //       span.style.webkitTextFillColor = "transparent";
+    //     } else {
+    //       span.style.color = "black";
+    //       span.style.background = "white";
+    //       span.style.webkitTextFillColor = "";
+    //     }
+    //   });
+    // });
   }
 </script>
 
+<!-- highlighting words  -->
 <script>
-  // highlights all of the other iterations of a word at the same time
   window.onload = function () {
-    const reactSpans = document.querySelectorAll(
-      ".react-span"
-    ) as NodeListOf<HTMLSpanElement>;
-    reactSpans.forEach((span) => {
-      span.addEventListener("mouseover", () => {
-        reactSpans.forEach(
-          (span) => (
-            (span.style.color = "white"), (span.style.background = "black")
-          )
-        );
-      });
+    const highlightElements = (className: string) => {
+      const elements = document.querySelectorAll(
+        `.${className}`
+      ) as NodeListOf<HTMLSpanElement>;
 
-      span.addEventListener("mouseout", () => {
-        reactSpans.forEach(
-          (span) => ((span.style.color = ""), (span.style.background = ""))
-        );
+      elements.forEach((span) => {
+        span.addEventListener("mouseover", () => {
+          elements.forEach((span) => {
+            span.style.color = "white";
+            span.style.background = "black";
+          });
+        });
+
+        span.addEventListener("mouseout", () => {
+          elements.forEach((span) => {
+            span.style.color = "";
+            span.style.background = "";
+          });
+        });
       });
-    });
+    };
+
+    highlightElements("node-span");
+    highlightElements("react-span");
+    highlightElements("JS-span");
+    highlightElements("next-span");
+    highlightElements("jest-span");
+    highlightElements("playwright-span");
   };
 </script>
 
-<!-- ``
-
-  
-tailwind css helpers :
-
+<!-- tailwind css helpers :
 bg-pink-100
-border-8 border-red-800
-
- -->
+border-8 border-red-800 -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Keelie CV</title>
+    <title>Keelie Harvey CV</title>
   </head>
 
   <body class="space-y-5 font-mono">
-    <h1 class="text-7xl font-bold text-center">Keelie Codes</h1>
+    <h1 class="text-7xl font-bold text-center">Keelie Harvey</h1>
     <h2 class="text-xl text-center">Junior Full Stack Developer</h2>
     <div class="flex space-x-5 justify-center">
       <a href="mailto:k-velvet-p@protonmail.com" target="_blank">
@@ -101,24 +127,32 @@ border-8 border-red-800
       </div>
 
       <!-- <div class="m-5 justify-around flex flex-row border-4 border-red-600 gap-x-px"> -->
-      <div class="m-5 grid gap-2 grid-row-3 tracking-tight lg:flex lg:flex-row">
-        <div class="">
+      <div class="grid grid-cols-3 m-3">
+        <!-- <div
+        class="bg-pink-100
+      border-8 border-red-800 m-5 grid grid-cols-3 tracking-tight lg:flex lg:flex-row"
+      > -->
+        <div class="border-r-2 border-dashed text-center">
           <h3 class="font-bold underline">Front End</h3>
-          <p class="">
-            <span class="react-span">React</span> | JavaScript | TypeScript | HTML5
-            | CSS3 | Jest | Playwright
+          <p>
+            <span class="react-span">React</span> | <span class="next-span"
+              >NextJS</span
+            > | <span class="JS-span">JavaScript</span> | TypeScript | HTML5 | CSS3
+            | <span class="jest-span">Jest</span> | <span
+              class="playwright-span">Playwright</span
+            >
           </p>
         </div>
-        <div class="group-hover:bg-black group-hover:text-white">
-          <div>
-            <h3 class="font-bold underline">Back End</h3>
-          </div>
-          <p>Node.js | Express.js | PostgreSQL | Supabase</p>
+
+        <div class="text-center border-r-2 border-dashed">
+          <h3 class="font-bold underline">Back End</h3>
+          <p>
+            <span class="node-span">Node.js</span> | Express.js | PostgreSQL | Supabase
+          </p>
         </div>
-        <div class="group-hover:bg-black group-hover:text-white">
-          <div>
-            <h3 class="font-bold underline">Other</h3>
-          </div>
+
+        <div class="text-center">
+          <h3 class="font-bold underline">Other</h3>
           <p>VSCode | Git | Trello | Figma | Netlify | Vercel</p>
         </div>
       </div>
@@ -130,7 +164,7 @@ border-8 border-red-800
       </div>
       <div class="md:m-10 m-5 flex flex-col space-y-5">
         <div class="inline-block">
-          <Projects
+          <!-- <Projects
             title="Raena Cohen EPK"
             tag="Eletronic Press Kit for a musician"
             site="https://raena-cohen-epk.vercel.app/"
@@ -138,11 +172,35 @@ border-8 border-red-800
             tech_Frontend="Frontend: JavaScript | Next.js React-Hook-Forms | Jest Playwrite | Vercel"
             tech_Backend="Backend: Node.js | Nodemailer"
             tech_Other="Styling and Animation: Animate.css"
+          > -->
+          <Projects
+            title="Raena Cohen EPK"
+            tag="Eletronic Press Kit for a musician"
+            site="https://raena-cohen-epk.vercel.app/"
+            repo="https://github.com/K-velvet-P/Raena-Cohen-EPK"
           >
             <!-- add child here  -->
-            <div class="m-3">
-              <!-- <h1>Tech Stack</h1> -->
+            <!-- <h1>Tech Stack</h1> -->
+            <div>
+              <p class="text-[13px] border-2 w-fit">
+                Frontend: <span class="JS-span">JavaScript</span> | <span
+                  class="next-span">Next.js</span
+                > | <span class="react-span">React-Hook-Forms</span> | <span
+                  class="jest-span">Jest</span
+                >
+                <span class="playwright-span">Playwright</span> | Vercel
+              </p>
+              <p class="text-[13px] border-2 w-fit">
+                Backend: <span class="node-span">Node.js</span> | <span
+                  class="node-span">Nodemailer</span
+                >
+              </p>
+              <p class="text-[13px] border-2 w-fit">
+                Styling and Animation: Animate.css
+              </p>
+            </div>
 
+            <div class="m-3">
               <ul class="list-disc flex flex-col gap-5 md:gap-2">
                 <li class="spotlight">
                   Designed and built a responsive, mobile-first website for a
@@ -157,9 +215,10 @@ border-8 border-red-800
                   I-frames and connecting to Linktrees.
                 </li>
                 <li class="spotlight">
-                  Integrated a contact form using Nodemailer, attached directly
-                  to the clients professional email. Including validation and
-                  feedback.
+                  Integrated a contact form using <span class="node-span"
+                    >Nodemailer</span
+                  > , attached directly to the clients professional email. Including
+                  validation and feedback.
                 </li>
               </ul>
             </div>
@@ -174,10 +233,20 @@ border-8 border-red-800
                 tag="Dog adoption site"
                 site="https://pawsforaffection.netlify.app/"
                 repo="https://github.com/K-velvet-P/TheHackitectsFinalProjects"
-                tech_Frontend="Frontend: JavaScript | Swiper Material UI | Jest Playwrite | Netlify"
-                tech_Backend="Backend: Node.js | Supabase"
-                tech_Other=""
               />
+            </div>
+
+            <div>
+              <p class="text-[13px] border-2 w-fit">
+                Frontend: <span class="JS-span">JavaScript</span> |
+                <span class="react-span">React</span> | Swiper Material UI | <span
+                  class="jest-span">Jest</span
+                >
+                <span class="playwright-span">Playwright</span> | Netlify
+              </p>
+              <p class="text-[13px] border-2 w-fit">
+                Backend: <span class="node-span">Node.js</span> | Supabase
+              </p>
             </div>
 
             <div class="m-3">
@@ -213,59 +282,6 @@ border-8 border-red-800
             </div>
           </div>
         </div>
-        <!-- <div class="flex flex-col">
-          <div class="">
-            <div class="flex flex">
-              <Projects
-                title="Paws For Affection"
-                tag="Dog adoption site"
-                site="https://pawsforaffection.netlify.app/"
-                repo="https://github.com/K-velvet-P/TheHackitectsFinalProjects"
-                tech_Frontend="Frontend: JavaScript | Swiper, Material UI | Jest, Playwrite | Netlify"
-                tech_Backend="Backend: Node.js | Supabase"
-                tech_Other=""
-              />
-              <div
-                class="ml-96 relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
-              >
-                <img
-                  src="/Macbook-Air-pawsforaffection.netlify.app.png"
-                  alt="Paws for Affection"
-                />
-              </div>
-            </div>
-
-            <div class="m-3">
-              <ul class="list-disc flex flex-col gap-1">
-                <li>
-                  Developed a full-stack <span class="react-span">React</span>
-                  app in an agile team and demoing it to industry experts.
-                </li>
-                <li>
-                  Collaborated with team members to ideate, plan and execute the
-                  project
-                </li>
-                <li>
-                  Participated in pair programming, improving team-working,
-                  communication, and problem-solving skills.
-                </li>
-                <li>Led the team in daily stand-ups, retros and sprints.</li>
-                <li>
-                  Contributed to building a database, linking it to the frontend
-                  and displaying dogs avabile for adoption on site.
-                </li>
-                <li>
-                  Contributed to implementing log in functionally with
-                  authorisation.
-                </li>
-                <li>
-                  Contributed to utelising superbase’s built it Postgrest query
-                  builder to allow authorised users to populate the database.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
 
         <div>
           <div class="">
@@ -274,10 +290,22 @@ border-8 border-red-800
               tag="Top Trump card game"
               site="https://top-trump-star-wars.vercel.app/"
               repo="https://github.com/K-velvet-P/TopTrumpStarWars"
-              tech_Frontend="Frontend: JavaScript | React | Jest Playwrite | Vercel"
-              tech_Backend="Backend: Node.js"
-              tech_Other="API: SWAPI Star Wars API"
             >
+              <div>
+                <p class="text-[13px] border-2 w-fit">
+                  Frontend: <span class="JS-span">JavaScript</span> | <span
+                    class="react-span">React</span
+                  > | <span class="jest-span">Jest</span>
+                  <span class="playwright-span">Playwright</span> | Vercel
+                </p>
+                <p class="text-[13px] border-2 w-fit">
+                  Backend: <span class="node-span">Node.js</span>
+                </p>
+                <p class="text-[13px] border-2 w-fit">
+                  API: SWAPI Star Wars API
+                </p>
+              </div>
+
               <div class="m-3">
                 <ul class="list-disc flex flex-col gap-5 md:gap-2">
                   <li class="spotlight">
@@ -308,21 +336,21 @@ border-8 border-red-800
           approach challenges with an open mind I have played a vital role in
           raising and mentoring my younger sisters, instilling in me strong
           leadership, patience, and the ability to guide others towards growth.
-          <p
-            class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
-          >
-            With the help of technology, I have been able to overcome my
-            dyslexia and discover a love for learning, which has ignited a
-            strong passion for all things tech.
-          </p>
-          <p
-            class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
-          >
-            Recently completing a 16-week coding bootcamp honed my skills in
-            front-end, back-end, and infrastructure technologies. i complement
-            this with regular participation in tech meet-ups to further enrich
-            my knowledge.
-          </p>
+        </p>
+        <p
+          class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
+        >
+          With the help of technology, I have been able to overcome my dyslexia
+          and discover a love for learning, which has ignited a strong passion
+          for all things tech.
+        </p>
+        <p
+          class="spotlight m-5 text-center md:m-10 indent-8 md:text-justify leading-loose"
+        >
+          Recently completing a 16-week coding bootcamp honed my skills in
+          front-end, back-end, and infrastructure technologies. i complement
+          this with regular participation in tech meet-ups to further enrich my
+          knowledge.
         </p>
       </div>
     </div>

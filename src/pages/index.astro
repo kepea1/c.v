@@ -1,5 +1,6 @@
 ---
 import Projects from "../components/Projects.astro";
+import { Image } from "astro:assets";
 ---
 
 <script>
@@ -98,7 +99,7 @@ border-8 border-red-800 -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Keelie Harvey CV</title>
@@ -109,15 +110,25 @@ border-8 border-red-800 -->
     <h2 class="text-xl text-center">Junior Full Stack Developer</h2>
     <div class="flex space-x-5 justify-center">
       <a href="mailto:k-velvet-p@protonmail.com" target="_blank">
-        <img src="/mail-icon.png" alt="Mail Icon" /></a
-      >
+        <Image src="/mail-icon.png" alt="Mail Icon" width="50" height="50" />
+      </a>
 
       <a href="https://github.com/kepea1" target="_blank">
-        <img src="/github-icon.png" alt="github Icon" />
+        <Image
+          src="/github-icon.png"
+          alt="github Icon"
+          width="50"
+          height="50"
+        />
       </a>
 
       <a href="https://www.linkedin.com/in/k-v-p/" target="_blank">
-        <img src="/linkedin-icon.png" alt="linkedin Icon" />
+        <Image
+          src="/linkedin-icon.png"
+          alt="linkedin Icon"
+          width="50"
+          height="50"
+        />
       </a>
     </div>
     <!----------------->
@@ -173,6 +184,7 @@ border-8 border-red-800 -->
             tech_Backend="Backend: Node.js | Nodemailer"
             tech_Other="Styling and Animation: Animate.css"
           > -->
+
           <Projects
             title="Raena Cohen EPK"
             tag="Eletronic Press Kit for a musician"

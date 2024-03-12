@@ -24,24 +24,28 @@ const { title, tag, site, repo } = Astro.props;
         alt="link to deployed site"
       />
       <a
-        class="inline-block"
+        class="inline-block underline"
         href={site}
         target="_blank"
         rel="noopener noreferrer"
       >
-    </a>
-        <p class="underline">Deployed Site</p>
-      <a href={repo} target="_blank" rel="noopener noreferrer">
-        <Image
-          class="w-4 h-4"
-          width="48"
-          height="48"
-          src="/link-icon-64.png"
-          alt="link to repo"
-        />
-        <a href={repo} target="_blank" rel="noopener noreferrer">
-        </a>
-        <p class="underline">Repo</p>
+        Deployed Site
+      </a>
+
+      <Image
+        class="w-4 h-4"
+        width="48"
+        height="48"
+        src="/link-icon-64.png"
+        alt="link to repo"
+      />
+      <a
+        class="inline-block underline"
+        href={repo}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Repo
       </a>
     </div>
   </div>

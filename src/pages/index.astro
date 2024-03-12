@@ -3,61 +3,7 @@ import Projects from "../components/Projects.astro";
 import { Image } from "astro:assets";
 ---
 
-<script>
-  let elements: NodeListOf<Element> = document.querySelectorAll(".spotlight");
 
-  for (let i = 0; i < elements.length; i++) {
-    let htmlElement = elements[i] as HTMLElement;
-    // console.log(htmlElement.innerText);
-    const text = htmlElement.innerText;
-    htmlElement.innerHTML = "";
-
-    for (let letter of text) {
-      htmlElement.innerHTML += `<span>${letter}</span>`;
-    }
-    const spans = htmlElement.querySelectorAll("span");
-
-    htmlElement.addEventListener("mousemove", (e) => {
-      spans.forEach((span) => {
-        const rect = span.getBoundingClientRect(); // get the size of the element
-        const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY); // get the distance between the mouse and the element
-        if (dist < 40) {
-          // if the distance is less than 40px
-          span.style.background = "rgba(300,58,180,1)";
-          // span.style.color = "white";
-          span.style.outline = "black";
-
-          // span.style.background =
-          //   "radial-gradient(circle, rgba(300,58,180,1) 20%, rgba(253,29,29,1) 60%, rgba(252,176,69,1) 20%)";
-          // span.style.backgroundClip = "text";
-          // span.style.webkitTextFillColor = "transparent";
-        } else {
-          span.style.color = "black";
-          span.style.background = "white";
-          // span.style.webkitTextFillColor = "";
-        }
-      });
-    });
-
-    // htmlElement.addEventListener("mousemove", (e) => {
-    //   spans.forEach((span) => {
-    //     const rect = span.getBoundingClientRect();
-    //     const dist = Math.hypot(rect.x - e.clientX, rect.y - e.clientY);
-    //     if (dist < 60) {
-    //       span.style.background = " rgb(131,58,180)";
-    //       span.style.background =
-    //         " radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)";
-    //       span.style.backgroundClip = "text";
-    //       span.style.webkitTextFillColor = "transparent";
-    //     } else {
-    //       span.style.color = "black";
-    //       span.style.background = "white";
-    //       span.style.webkitTextFillColor = "";
-    //     }
-    //   });
-    // });
-  }
-</script>
 
 <!-- highlighting words  -->
 <script>
@@ -102,6 +48,10 @@ border-8 border-red-800 -->
     <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Keelie Harvey - Aspiring junior full-stack developer with expertise in front-end technologies (React, Next.js, JavaScript), back-end development (Node.js, Express.js), and various tools (VSCode, Git, Trello). Explore my projects, skills, and profile. Contact me via email or check out my GitHub and LinkedIn profiles."
+    />
     <title>Keelie Harvey CV</title>
   </head>
 
@@ -109,25 +59,33 @@ border-8 border-red-800 -->
     <h1 class="text-7xl font-bold text-center">Keelie Harvey</h1>
     <h2 class="text-xl text-center">Junior Full Stack Developer</h2>
     <div class="flex space-x-5 justify-center">
-      <a href="mailto:k-velvet-p@protonmail.com" target="_blank">
-        <Image src="/mail-icon.png" alt="Mail Icon" width="50" height="50" />
+      <a
+        href="mailto:k-velvet-p@protonmail.com"
+        target="_blank"
+        aria-label="Mail"
+      >
+        <Image src="/mail-icon.png" alt="Mail Icon" width="48" height="48" />
       </a>
 
-      <a href="https://github.com/kepea1" target="_blank">
+      <a href="https://github.com/kepea1" target="_blank" aria-label="Github">
         <Image
           src="/github-icon.png"
           alt="github Icon"
-          width="50"
-          height="50"
+          width="48"
+          height="48"
         />
       </a>
 
-      <a href="https://www.linkedin.com/in/k-v-p/" target="_blank">
+      <a
+        href="https://www.linkedin.com/in/k-v-p/"
+        target="_blank"
+        aria-label="Linkedin"
+      >
         <Image
           src="/linkedin-icon.png"
           alt="linkedin Icon"
-          width="50"
-          height="50"
+          width="48"
+          height="48"
         />
       </a>
     </div>
@@ -261,7 +219,7 @@ border-8 border-red-800 -->
               </p>
             </div>
 
-            <div class="m-3">
+            <div class="m-3 background-spotlight">
               <ul class="list-disc flex flex-col gap-5 md:gap-2">
                 <li class="spotlight">
                   Developed a full-stack <span class="react-span">React</span>
@@ -303,7 +261,7 @@ border-8 border-red-800 -->
               site="https://top-trump-star-wars.vercel.app/"
               repo="https://github.com/K-velvet-P/TopTrumpStarWars"
             >
-              <div>
+              <div class="background-spotlight">
                 <p class="text-[13px] border-2 w-fit">
                   Frontend: <span class="JS-span">JavaScript</span> | <span
                     class="react-span">React</span
@@ -325,7 +283,9 @@ border-8 border-red-800 -->
                     and create a front end <span class="react-span">React</span>
                     app game using the Star Wars Api.
                   </li>
-                  <li>Worked quickly and accurately under time constraints</li>
+                  <li class="spotlight">
+                    Worked quickly and accurately under time constraints
+                  </li>
                 </ul>
               </div>
             </Projects>
